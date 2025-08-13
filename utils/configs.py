@@ -59,7 +59,15 @@ ark0se_token_url_list = ark0se_token_url.split(',') if ark0se_token_url else []
 proxy_url_list = proxy_url.split(',') if proxy_url else []
 sentinel_proxy_url_list = sentinel_proxy_url.split(',') if sentinel_proxy_url else []
 impersonate_list = ast.literal_eval(impersonate_list_str)
-user_agents_list = ast.literal_eval(user_agents_list_str)
+try:
+    # Ensure the string is a valid Python list literal
+    user_agents_list = ast.literal_eval(user_agents_list_str)
+    # If it's a single string (not a list), wrap it in a list
+    if isinstance(user_agents_list, str):
+        user_agents_list = [user_agents_list]
+except Exception:
+    # Fallback: treat as a single user agent string
+    user_agents_list = [user_agents_list_str]
 device_tuple = ast.literal_eval(device_tuple_str)
 browser_tuple = ast.literal_eval(browser_tuple_str)
 platform_tuple = ast.literal_eval(platform_tuple_str)
