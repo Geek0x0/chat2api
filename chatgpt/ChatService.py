@@ -174,6 +174,10 @@ class ChatService:
             self.req_model = "text-davinci-002-render-sha"
         elif "auto" in self.origin_model:
             self.req_model = "auto"
+        elif "gpt-5" in self.origin_model:
+            self.req_model = "gpt-5"
+        elif "gpt-5-think" in self.origin_model:
+            self.req_model = "gpt-5-think"
         else:
             self.req_model = "gpt-4o"
 
